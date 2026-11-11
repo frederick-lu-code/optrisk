@@ -13,17 +13,22 @@ from optrisk.black_scholes import (
     vega,
 )
 from optrisk.implied_vol import implied_vol
+from optrisk.portfolio import Position, UnderlyingRisk, load_positions, risk_report
 
 __all__ = [
     "FloatArray",
     "Greeks",
     "OptionKind",
+    "Position",
+    "UnderlyingRisk",
     "binomial_price",
     "delta",
     "gamma",
     "greeks",
     "implied_vol",
+    "load_positions",
     "price",
+    "risk_report",
     "theta",
     "vega",
 ]
