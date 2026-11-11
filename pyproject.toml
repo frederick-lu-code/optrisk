@@ -1,0 +1,41 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "optrisk"
+version = "0.1.0"
+description = "Black-Scholes pricing, implied volatility and a per-underlying risk report for European options."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = ["numpy>=1.26", "scipy>=1.11"]
+
+[project.optional-dependencies]
+dev = ["pytest", "hypothesis", "ruff", "mypy"]
+
+[project.scripts]
+optrisk = "optrisk.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/optrisk"]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.mypy]
+strict = true
+files = ["src"]
+python_version = "3.12"
+
+# scipy ships no type information and scipy-stubs is not an allowed dependency.
+[[tool.mypy.overrides]]
+module = "scipy.*"
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["error"]
