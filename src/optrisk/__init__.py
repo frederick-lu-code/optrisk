@@ -11,6 +11,7 @@ from optrisk.black_scholes import (
     theta,
     vega,
 )
+from optrisk.implied_vol import implied_vol
 
 __all__ = [
     "FloatArray",
@@ -19,6 +20,7 @@ __all__ = [
     "delta",
     "gamma",
     "greeks",
+    "implied_vol",
     "price",
     "theta",
     "vega",
